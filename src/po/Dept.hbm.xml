@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        <hibernate-mapping>
+        	<class name="po.Dept" table="`DEPT`" dynamic-update="true"
+        		lazy="true"
+        	
+        	
+        	
+        	>
+        	
+        	
+        	<id name="deptNo" type="java.lang.Byte">
+        		<column name="NO"></column>
+        		<generator class="assigned"/>
+        	</id>
+        	<property name="deptName" type="java.lang.String">
+        	<column name="DNAME"></column>
+        	
+        	</property>
+        	
+        	<property name="location" type="java.lang.String">
+        	
+        	<column name="LOC"></column>
+        	
+        	
+        	</property>
+        	<!-- 集合接收查询的结果做关联映射 -->
+        	<set name="emps" cascade="all">
+        		<key column="DEPTNO"></key>
+        		<!-- 通过DEPTNO进行判断关系的建立，根据部门编号，选取雇员对象填充到集合中 -->
+        		<one-to-many class="po.Emp"></one-to-many>
+        	
+        	<!-- 设置一对多的去向，即一个Dept对应多个Emp对象 -->
+        	
+        	</set>
+
+        	
+        	</class>
+        
+        
+        
+        
+        
+        
+  </hibernate-mapping>
+  
+  
+  
+  
+ 
