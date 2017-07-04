@@ -9,4 +9,32 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>CtrlServlet</display-name>
+    <servlet-name>CtrlServlet</servlet-name>
+    <servlet-class>servlet.CtrlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CtrlServlet</servlet-name>
+    <url-pattern>/CtrlServlet</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>CharacterEncodingFilter</display-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>filter.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>OpenSessionInViewFilter</display-name>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <filter-class>servlet.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>OpenSessionInViewFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
