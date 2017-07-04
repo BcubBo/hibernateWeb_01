@@ -31,7 +31,7 @@
   <filter>
     <display-name>OpenSessionInViewFilter</display-name>
     <filter-name>OpenSessionInViewFilter</filter-name>
-    <filter-class>servlet.OpenSessionInViewFilter</filter-class>
+    <filter-class>filter.OpenSessionInViewFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>OpenSessionInViewFilter</filter-name>

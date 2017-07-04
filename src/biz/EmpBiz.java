@@ -14,37 +14,15 @@ public class EmpBiz {
 	public Emp findById(java.io.Serializable id){
 		
 		
-		Transaction tx = null;
 		
-		Emp emp = null;
-		
-		try{
-			
-			tx = HibernateSessionFactory.getSession().beginTransaction();
-			
-			emp = dao.findEmpById(id);
+		Emp emp = dao.findEmpById(id);
 
 			System.out.println(emp.getEmpName()+"\t"+emp.getDept().getDeptName());
 			
 		
-			tx.commit();
 			
 			
 			
-		}catch(HibernateException e){
-			
-			
-			e.printStackTrace();
-			if(tx!=null){
-				
-				
-				tx.rollback();
-				
-				
-			}
-			
-			
-		}
 		
 		return emp;
 		
@@ -55,34 +33,15 @@ public class EmpBiz {
 	
 	public void addNewEmp(Emp emp){
 		
-		
-		Transaction tx = null;
-		
-	
-		
-		try{
-			
-			tx = HibernateSessionFactory.getSession().beginTransaction();
 			Dept dept = new DeptDao().findDeptById(emp.getDept().getDeptNo());
 			
 			emp.setDept(dept);
 			dao.save(emp);
 			
-			tx.commit();
 			
 			System.out.println("成功");
 			
 			
-		}catch(HibernateException e){
-			
-			e.printStackTrace();
-			if(tx!=null){
-				
-				tx.rollback();
-				
-			}
-			
-		}
 		
 		
 		
@@ -97,31 +56,12 @@ public class EmpBiz {
 	public void modifyEmp(Emp emp){
 		
 		
-		Transaction tx = null;
-		
-	
-		
-		try{
-			
-			tx = HibernateSessionFactory.getSession().beginTransaction();
 			
 			dao.update(emp);
 			
-			tx.commit();
 			
 			System.out.println("更新成功");
 			
-			
-		}catch(HibernateException e){
-			
-			e.printStackTrace();
-			if(tx!=null){
-				
-				tx.rollback();
-				
-			}
-			
-		}
 		
 		
 		
@@ -136,32 +76,14 @@ public class EmpBiz {
 	
 public void delete(Emp emp){
 		
-		
-		Transaction tx = null;
-		
-	
-		
-		try{
-			
-			tx = HibernateSessionFactory.getSession().beginTransaction();
 			
 			dao.delete(emp);
 			
-			tx.commit();
 			
 			System.out.println("删除成功");
 			
 			
-		}catch(HibernateException e){
-			
-			e.printStackTrace();
-			if(tx!=null){
-				
-				tx.rollback();
-				
-			}
-			
-		}
+		
 		
 		
 		
