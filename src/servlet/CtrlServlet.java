@@ -25,7 +25,7 @@ public class CtrlServlet extends HttpServlet {
 	}//doGet方法
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		//doGet(request, response);
 		
 		
 		String strId =request.getParameter("id");

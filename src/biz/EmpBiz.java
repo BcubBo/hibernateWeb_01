@@ -1,9 +1,5 @@
 package biz;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Transaction;
-
-import common.HibernateSessionFactory;
 import dao.DeptDao;
 import dao.EmpDao;
 import po.Dept;
@@ -12,17 +8,9 @@ import po.Emp;
 public class EmpBiz {
 	private EmpDao dao = new EmpDao();
 	public Emp findById(java.io.Serializable id){
-		
-		
-		
 		Emp emp = dao.findEmpById(id);
 
 			System.out.println(emp.getEmpName()+"\t"+emp.getDept().getDeptName());
-			
-		
-			
-			
-			
 		
 		return emp;
 		
@@ -40,16 +28,6 @@ public class EmpBiz {
 			
 			
 			System.out.println("成功");
-			
-			
-		
-		
-		
-		
-		
-		
-		
-		
 	}//addNewEmp方法结尾
 	
 	
@@ -61,14 +39,6 @@ public class EmpBiz {
 			
 			
 			System.out.println("更新成功");
-			
-		
-		
-		
-		
-		
-		
-		
 		
 	}//modifyEmp方法结尾	
 	
@@ -81,16 +51,7 @@ public void delete(Emp emp){
 			
 			
 			System.out.println("删除成功");
-			
-			
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 	}//deleteEmp方法结尾		
 	
