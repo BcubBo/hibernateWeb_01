@@ -11,12 +11,13 @@ public class HibernateSessionFactory {
 	private static SessionFactory sessionFactory;
 	
 	static{
-		
+		System.out.println("--------启动会话工厂");
 		
 		try{
 			
 			cfg = new Configuration().configure();
 			sessionFactory = cfg.buildSessionFactory();
+			System.out.println("---------启动链接结束");
 			
 		}catch(HibernateException e){
 			

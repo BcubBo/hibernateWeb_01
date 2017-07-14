@@ -12,17 +12,20 @@
 <title>起始页面</title>
 </head>
 <body>
+This is the start page!!!!!
+<div>
 	<a href="CtrlServlet?id=20">select dept 20 </a>
+	<br/>
 	<c:if test="${not empty requestScope.result }">
 	<c:out value="${requestScope.result.deptName }"/><br/>
 	<hr/>
 	<c:forEach items="${requestScope.result.emps }" var="emp">
 	
-		${emp.empName }
+		${emp.empName }<br/>
 	
 	
 	</c:forEach>
 </c:if>
-
+</div>
 </body>
 </html>

@@ -16,13 +16,28 @@ public class DeptBiz {
 	private DeptDao dao  = new DeptDao();
 	public void saveDept(Dept dept){
 			
-
+		Transaction tx = null;
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
 			
 			dao.save(dept);
 			
-
+			tx.commit();
 			System.out.println("添加成功");
-
+			
+			
+		}catch(HibernateException e){
+			
+			e.printStackTrace();
+			if(tx != null){
+				
+				tx.rollback();
+				
+				
+				
+			}
+		}
 	
 		
 		
@@ -32,10 +47,30 @@ public class DeptBiz {
 	
 	public void modifyDept(Dept dept){
 		
-		
+		Transaction tx = null;
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
 			dao.update(dept);
 			
-
+			tx.commit();
+			
+			System.out.println("<----\t修改成功\t---->");
+			
+		}catch(HibernateException e){
+			
+			e.printStackTrace();
+			
+			if(tx != null){
+				
+				tx.rollback();
+				System.out.println("<----\t已回滚\t---->");
+				
+			}
+			
+			
+		}
 		
 		
 		
@@ -43,10 +78,28 @@ public class DeptBiz {
 	
 	public void deleteDept(Dept dept){
 		
-
+		Transaction tx = null;
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
 			dao.delete(dept);
 			
-
+			tx.commit();
+			
+			
+			
+		}catch(HibernateException e){
+			
+			e.printStackTrace();
+			if(tx != null){
+				
+				tx.rollback();
+			}
+			
+			
+		}
+		
 		
 		
 		
@@ -55,7 +108,14 @@ public class DeptBiz {
 	}//deleteDept结尾
 	
 	public Dept findDeptById(java.io.Serializable id){
-		Dept dept = dao.findDeptById(id);
+		
+		Transaction tx = null;
+		Dept dept = null;
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
+			
+			dept = dao.findDeptById(id);
 			System.out.println("<-----\t"+dept.getDeptName()+"\t----->");
 			
 			Set<Emp> emps  = dept.getEmps();
@@ -68,7 +128,22 @@ public class DeptBiz {
 				
 				
 			}
-
+			
+			tx.commit();
+			
+			
+		}catch(HibernateException e){
+			
+			e.printStackTrace();
+			if(tx != null){
+				
+				tx.rollback();
+				
+				
+			}
+			
+			
+		}
 		
 		
 		
@@ -82,9 +157,15 @@ public class DeptBiz {
 	
 	
 	public void addNewDept(Dept dept){
+		
+		Transaction tx = null;
+		
+		try{
+			
+			tx = HibernateSessionFactory.getSession().beginTransaction();
 			
 			dao.save(dept);
-//			Set<Emp> emps = dept .getEmps();
+			Set<Emp> emps = dept .getEmps();
 			//检查是否有集合需要进行处理，如果有需要进行保存
 /*			if(emps.size()!=0){
 
@@ -103,8 +184,24 @@ public class DeptBiz {
 				}
 			}*/
 			
+			tx.commit();
 			System.out.println("<----添加成功---->");
 			
+			
+			
+		}catch(HibernateException e){
+			
+			e.printStackTrace();
+			
+			if(tx != null){
+				
+				tx.rollback();
+				
+				
+				
+			}
+			
+		}
 		
 		
 		
